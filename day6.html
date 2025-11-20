@@ -108,7 +108,7 @@
         API()
             .then(data => {
                 document.getElementById('txt5').innerHTML = "Du lieu API -> " + JSON.stringify(data);
-                console.log("Du lieu nhan duoc la:" ,data)
+                console.log("Du lieu nhan duoc la:", data)
             })
             .catch(err1 => {
                 document.getElementById('txt5').innerHTML = "Du lieu API -> " + err1;
