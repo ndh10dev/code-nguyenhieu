@@ -32,6 +32,23 @@
 
     <!-- JS -->
     <script>
+        //- Tạo một hàm sử dụng closure để lưu trữ một giá trị và cung cấp phương thức để cập nhật giá trị đó.
+        function taoBoNho(giaTri){
+            let value = giaTri;
+            return {
+                getValue: function(){
+                    return value;
+                },
+                setValue: function(giaTriNew){
+                    value = giaTriNew;
+                }
+            }
+        }
+        const boNho = taoBoNho(20);
+        console.log(boNho.getValue());
+        boNho.setValue(50);
+        console.log(boNho.getValue());
+
 
     </script>
 </body>
