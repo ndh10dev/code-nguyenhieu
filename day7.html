@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ngay 7</title>
+  <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
+
+    <!-- CSS -->
+    <style>
+        h1{
+            font-size: 30px;
+            color: chocolate;
+        }
+        p{
+            font-size: 20px;
+            color: #333333;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test JS trong console ==></h1>
+    <p id="txt1"></p>
+    <p id="txt2"></p>
+    <p id="txt3"></p>
+    <p id="txt4"></p>
+    <p id="txt5"></p>
+    <p id="txt6"></p>
+    <p id="test1"></p>
+    <p id="test2"></p>
+
+    <!-- JS -->
+    <script>
+        function thongTin(){
+            return new Promise((resolve, reject) => {
+                console.log("Dang load du lieu...");
+                setTimeout(() => {
+                    const succes = true;
+                    if (succes) {
+                        resolve({
+                            ten: "Nguyen Duc Hieu",
+                            tuoi: 20,
+                            diachi: "Ha Noi"
+                        });
+                  } else {
+                    reject("Khong co ket qua");
+                  }
+                }, 2000);
+            });
+        };
+        setTimeout(function(){
+            thongTin()
+            .then(data => {
+                document.getElementById('txt1').innerHTML = "Thong tin sinh vien la: " + JSON.stringify(data);
+                console.log("Du lieu nhan duoc la: ", data);
+            })
+            .catch(err => {
+                document.getElementById('txt1').innerHTML = "Loi khong load duoc thong tin !!!" + err;
+                console.log("Loi du lieu !!!" ,err);
+            })
+        });
+    </script>
+</body>
+</html>
