@@ -16,10 +16,32 @@
             color: #333333;
             font-family: Arial, Helvetica, sans-serif;
         }
+        .input_all{
+    	width: 300px;
+    	height: 30px;
+    	border-radius: 4px;
+    	border: 2px solid black;
+	    }
+        .button_all{
+    	height: auto;
+    	background-color: aqua;
+    	color: black;
+    	border-radius: 10%;
+        padding:7px;
+	    }
+	    .button_all:hover{
+    	transform: translateY(-5px);
+    	box-shadow: 0 2px 2px black;
+	    }
     </style>
 </head>
 <body>
     <h1>Test JS trong console ==></h1>
+    <div class="box">
+        <p id="text_1" class="text_all">Nhập chuỗi để kiểm tra: </p>
+        <input type="text" id="input_1" class="input_all" placeholder="...">
+        <button id="button_1" class="button_all">Kiểm tra</button>
+    </div>
     <p id="txt">Mang tren la mang palindrome: </p>
     <p id="txt2">Test phuong trinh bac 2</p>
     <p id="txt3"></p>
@@ -33,16 +55,27 @@
     <script>
 
         //- Viết hàm kiểm tra một chuỗi có phải là palindrome.
-        let manggoc = "NgHieu EiHGn";
-        function pld(mang){
-            let cleanmang = mang.toLowerCase().replace(/\s+/g, '');
-            let rev = cleanmang.split('').reverse().join('');
-            return rev === cleanmang ;
+        function isPalindrome(str) {
+            let cleanStr = str.toLowerCase().replace(/\s+/g, '');
+            let reversed = cleanStr.split('').reverse().join('');
+            return reversed === cleanStr;
         }
-        setTimeout(function(){
-        document.getElementById('txt').innerHTML = "Mang tren la mang palindrome: " + pld(manggoc);
-        console.log(pld(manggoc));
-        }, 3000);
+        document.getElementById('button_1').addEventListener('click', function() {
+            let inputValue = document.getElementById('input_1').value;
+            if(inputValue.trim() === "") {
+                document.getElementById('txt').innerHTML = "Nhập chuỗi!";
+                return;
+            }
+            let result = isPalindrome(inputValue);
+            let outputText;
+            if(result) {
+                outputText = `Đây là palindrome`;
+            } else {
+                outputText = `Không phải là palindrome`;
+            }
+            document.getElementById('txt').innerHTML = outputText;
+            console.log(`Palindrome check: ${result}`);
+        });
 
 
         //- Viêt function phương trình bậc 2 in ra nghiệm đầu vào là 3 số a,b,c
