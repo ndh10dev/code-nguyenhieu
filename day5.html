@@ -56,24 +56,24 @@
 
         //- Viết hàm kiểm tra một chuỗi có phải là palindrome.
         function isPalindrome(str) {
-            let cleanStr = str.toLowerCase().replace(/\s+/g, '');
-            let reversed = cleanStr.split('').reverse().join('');
-            return reversed === cleanStr;
+            let clear = str.toLowerCase().replace(/\s+/g, '');
+            let reversed = clear.split('').reverse().join('');
+            return reversed === clear;
         }
         document.getElementById('button_1').addEventListener('click', function() {
-            let inputValue = document.getElementById('input_1').value;
-            if(inputValue.trim() === "") {
+            let gt = document.getElementById('input_1').value;
+            if(gt.trim() === "") {
                 document.getElementById('txt').innerHTML = "Nhập chuỗi!";
                 return;
             }
-            let result = isPalindrome(inputValue);
-            let outputText;
+            let result = isPalindrome(gt);
+            let out;
             if(result) {
-                outputText = `Đây là palindrome`;
+                out = `Đây là palindrome`;
             } else {
-                outputText = `Không phải là palindrome`;
+                out = `Không phải là palindrome`;
             }
-            document.getElementById('txt').innerHTML = outputText;
+            document.getElementById('txt').innerHTML = out;
             console.log(`Palindrome check: ${result}`);
         });
 
