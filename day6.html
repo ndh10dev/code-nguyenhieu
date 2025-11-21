@@ -36,23 +36,23 @@
         function taoBoNho(giaTri){
             let value = giaTri;
             return {
-                getValue: function(){
+                x: function(){
                     return value;
                 },
-                setValue: function(giaTriNew){
+                y: function(giaTriNew){
                     value = giaTriNew;
                 }
             }
         }
         const boNho = taoBoNho(20);
         setTimeout(function(){
-        document.getElementById('txt1').innerHTML = "Bo nho la: " + boNho.getValue();
-        console.log(`bo nho 1: ${boNho.getValue()}`);    
+        document.getElementById('txt1').innerHTML = "Bo nho la: " + boNho.x();
+        console.log(`bo nho 1: ${boNho.x()}`);    
         },3000);
         setTimeout(function(){
-        boNho.setValue(50);
-        document.getElementById('txt2').innerHTML = "Bo nho 2 la: " + boNho.getValue();
-        console.log(`bo nho 2: ${boNho.getValue()}`);    
+        boNho.y(50);
+        document.getElementById('txt2').innerHTML = "Bo nho 2 la: " + boNho.x();
+        console.log(`bo nho 2: ${boNho.x()}`);    
         },3500);
 
         //Promise
