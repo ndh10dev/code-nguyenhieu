@@ -60,5 +60,3 @@ async function loadFirstUser() {
     }
 }
 document.getElementById('btnUser').addEventListener('click' , loadFirstUser);
-
-
