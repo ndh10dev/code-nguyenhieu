@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merry Christmas 🎄</title>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            background-image: url('./christmast_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Snow */
+        #snowfall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .snowflake {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: snowfallAnimation linear infinite;
+            animation-duration: 4s;
+        }
+
+        /* Gift box */
+        #gift-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .gift {
+            width: 160px;
+            height: auto;
+            animation: rotateGift 6s linear infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .gift:hover {
+            transform: scale(1.1);
+        }
+
+        /* Message */
+        #message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            max-width: 90%;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .message-cover {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 12px;
+        }
+
+        .message-letter {
+            font-family: "Comic Sans MS", cursive;
+            font-style: italic;
+            font-size: 26px;
+            line-height: 1.6;
+            color: #b22222;
+        }
+
+        /* Animations */
+        @keyframes snowfallAnimation {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        @keyframes rotateGift {
+            0% { transform: rotateZ(0deg); }
+            100% { transform: rotateZ(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="snowfall"></div>
+
+    <div id="gift-box" onclick="showMessage()">
+        <img
+            class="gift"
+            src="https://i.ibb.co/Sw5Sp36P/Pngtree-christmas-gift-box-cartoon-cute-4039627.png"
+            alt="Gift"
+        />
+    </div>
+
+    <div id="message">
+        <p class="message-letter">
+            Merry Christmas🎄<br /><br />
+            ❄︎Chúc bạn luôn <br />
+            vui vẻ, hạnh phúc, <br />
+            bình an bên gia đình <br />
+            và bạn bè.✨
+        </p>
+    </div>
+
+    <script>
+        // Snowfall
+        function createSnowflake() {
+            const snowflake = document.createElement("div");
+            snowflake.className = "snowflake";
+            snowflake.style.left = Math.random() * window.innerWidth + "px";
+            snowflake.style.animationDuration = 3 + Math.random() * 3 + "s";
+            document.getElementById("snowfall").appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 6000);
+        }
+
+        setInterval(createSnowflake, 120);
+
+        // Show message
+        function showMessage() {
+            const giftBox = document.getElementById("gift-box");
+            const message = document.getElementById("message");
+
+            giftBox.style.display = "none";
+            message.style.display = "block";
+
+            setTimeout(() => {
+                giftBox.style.display = "block";
+                message.style.display = "none";
+            }, 50000);
+        }
+    </script>
+</body>
+</html>
